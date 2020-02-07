@@ -1,0 +1,39 @@
+
+<form>
+    <div class="form-group">
+        <input type="text" placeholder="Aluno" [(ngModel)]="aluno.nomeAluno" name="nomeAluno" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="number" placeholder="Nota1" [(ngModel)]="aluno.nota1Aluno" name="nota1Aluno" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="number" placeholder="Nota2" [(ngModel)]="aluno.nota2Aluno" name="nota2Aluno" class="form-control">
+    </div>
+    <input type="button" value="Cadastrar" *ngIf="id<0" (click)="cadastrarAluno()" class="btn btn-primary">
+    <input type="button" value="Editar" *ngIf="id>=0" (click)="atualizar()" class="btn btn-primary">
+</form>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Aluno</th>
+            <th>Média</th>
+            <th>Condição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aluno of listaAlunos; let id=index">
+            <td>{{aluno.nomeAluno | titlecase}}</td>
+            <td>{{mediaAluno(aluno.nota1Aluno, aluno.nota2Aluno)}}</td>
+            <td *ngIf="mediaAluno(aluno.nota1Aluno, aluno.nota2Aluno) >= 6" [ngClass]="{'aprovado': true}">Aprovado</td>
+            <td *ngIf="mediaAluno(aluno.nota1Aluno, aluno.nota2Aluno) < 6" [ngClass]="{'reprovado': true}">Reprovado</td>
+            <td>
+                <button (click)="editarAluno(id)" class="btn btn-outline-info">Editar</button>
+                <button (click)="excluirAluno(id)" class="btn btn-outline-danger">Excluir</button>
+            </td>
+        </tr>  
+    </tbody>
+    
+</table>
+

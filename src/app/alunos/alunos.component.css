@@ -1,0 +1,23 @@
+.aprovado{
+    color: green;
+}
+
+.reprovado{
+    color: red;
+}
+
+form{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    max-width: 500px;
+    position: relative;
+    
+}
+table{
+    margin: 0 100px 0 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    max-width: 600px;
+}
